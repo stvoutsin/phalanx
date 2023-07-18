@@ -1,0 +1,12 @@
+argo-cd:
+  server:
+    ingress:
+      hosts:
+        - "rspdev.ddns.net"
+
+    config:
+      url: "http://rspdev.ddns.net/argo-cd"
+
+  configs:
+    secret:
+      createSecret: true
