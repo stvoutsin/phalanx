@@ -3,8 +3,8 @@ orders:
     - name: initcommission
       image: lsstsqre/inituserhome
       securityContext:
-        runAsUser: 1000
-        runAsNonRootUser: true
+        runAsUser: 0
+        runAsNonRootUser: false
       volumeMounts:
         - mountPath: /homedirs
           name: homedirs
