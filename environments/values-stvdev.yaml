@@ -9,7 +9,7 @@ argo-workflows:
 cachemachine:
   enabled: true
 cert-manager:
-  enabled: false
+  enabled: true
 datalinker:
   enabled: false
 exposurelog:
