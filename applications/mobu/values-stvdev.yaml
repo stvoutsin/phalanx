@@ -1,14 +1,19 @@
 config:
   autostart:
-    - name: "tap"
-      count: 1
-      users:
-        - username: "bot-mobu03"
-          uidnumber: 45694
-          gidnumber: 1126
-      scopes: ["read:tap"]
+    - name: "firefighter"
+      count: 5
+      user_spec:
+        username_prefix: "bot-mobu-recommended"
+      scopes:
+        - "exec:notebook"
+        - "exec:portal"
+        - "read:image"
+        - "read:tap"
       business:
-        type: "TAPQueryRunner"
+        type: "NotebookRunner"
         options:
-          query_set: "tap_schema"
+          repo_url: "https://github.com/lsst-sqre/system-test.git"
+          repo_branch: "prod"
+          max_executions: 1
+          use_cachemachine: false
         restart: true
