@@ -10,5 +10,5 @@ config:
       business:
         type: "TAPQueryRunner"
         options:
-          query_set: "dp0.2"
+          query_set: "tap_schema"
         restart: true
