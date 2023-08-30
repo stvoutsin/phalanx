@@ -21,7 +21,7 @@ hips:
 ingress-nginx:
   enabled: true
 mobu:
-  enabled: false
+  enabled: true
 moneypenny:
   enabled: true
 narrativelog:
