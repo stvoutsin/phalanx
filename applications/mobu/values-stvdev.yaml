@@ -4,7 +4,9 @@ config:
     - name: "weekly"
       count: 1
       users:
-        - username: "bot-mobu-weekly"
+        - username: "bot-mobu-recommended"
+          uidnumber: 74768
+          gidnumber: 74768
       scopes:
         - "exec:notebook"
         - "exec:portal"
@@ -19,3 +21,4 @@ config:
           repo_branch: "prod"
           use_cachemachine: false
         restart: true
+
