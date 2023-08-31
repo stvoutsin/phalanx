@@ -17,7 +17,6 @@ config:
             image_class: "latest-weekly"
           repo_url: "https://github.com/lsst-sqre/system-test.git"
           repo_branch: "prod"
-          url_prefix: "/n2"
         restart: true
     - name: "weekly"
       count: 1
