@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up go
         uses: actions/setup-go@v4
 
       - name: Install helm-docs
-        run: go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
+        run: go install github.com/norwoodj/helm-docs/cmd/helm-docs@v1.11.0
         env:
           GOBIN: /usr/local/bin/
 
@@ -27,12 +27,30 @@ jobs:
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.0
 
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        python:
+          - "3.11"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: lsst-sqre/run-tox@v1
+        with:
+          python-version: ${{ matrix.python }}
+          tox-envs: "typing,py,coverage-report"
+          cache-key-prefix: test
+
   helm:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -42,7 +60,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install test dependencies
-        run: pip install .
+        run: make init
 
       - name: Expand modified charts
         run: expand-charts
@@ -66,7 +84,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Filter paths
         uses: dorny/paths-filter@v2
@@ -86,7 +104,7 @@ jobs:
 
       - name: Setup Minikube
         if: steps.filter.outputs.minikube == 'true'
-        uses: medyagh/setup-minikube@v0.0.13
+        uses: medyagh/setup-minikube@v0.0.14
         with:
           kubernetes-version: "v1.27.3"
           cpus: max
@@ -103,7 +121,7 @@ jobs:
           unzip /tmp/vault.zip
           sudo mv vault /usr/local/bin/vault
           sudo chmod +x /usr/local/bin/vault
-          sudo curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.7.7/argocd-linux-amd64
+          sudo curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.7.10/argocd-linux-amd64
           sudo chmod +x /usr/local/bin/argocd
           sudo apt-get install socat
           sudo pip install -r installer/requirements.txt

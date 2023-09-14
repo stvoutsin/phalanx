@@ -42,6 +42,7 @@ influxdb:
   config:
     data:
       cache-max-memory-size: 0
+      # Duration a write will wait before fsyncing. This is useful for slower disks or when WAL write contention is present.
       wal-fsync-delay: "100ms"
       trace-logging-enabled: true
     http:
@@ -129,8 +130,8 @@ influxdb-staging:
     #   init.iql: |+
   resources:
     requests:
-      memory: 1Gi
-      cpu: 1
+      memory: 96Gi
+      cpu: 8
     limits:
       memory: 96Gi
       cpu: 8
@@ -198,7 +199,6 @@ source-influxdb:
       memory: 96Gi
       cpu: 8
 
-
 influxdb2:
   enabled: false
   image:
@@ -243,8 +243,8 @@ influxdb2:
         influx bucket create --name telegraf-kafka-consumer --org default
   resources:
     requests:
-      memory: 1Gi
-      cpu: 1
+      memory: 16Gi
+      cpu: 8
     limits:
       memory: 96Gi
       cpu: 8
@@ -300,6 +300,32 @@ chronograf:
       memory: 64Gi
       cpu: 4
 
+source-kapacitor:
+  # -- Enable Kapacitor.
+  enabled: false
+  # -- Kapacitor image tag.
+  image:
+    repository: kapacitor
+    tag: 1.6.6
+  # -- Chronograf data persistence configuration.
+  persistence:
+    enabled: true
+    size: 100Gi
+  # -- InfluxDB connection URL.
+  influxURL: http://sasquatch-influxdb-staging.sasquatch:8086
+  # -- InfluxDB credentials, use influxdb-user and influxdb-password keys from secret.
+  existingSecret: sasquatch
+  # -- Kapacitor environment variables.
+  envVars:
+    KAPACITOR_SLACK_ENABLED: true
+  resources:
+    requests:
+      memory: 1Gi
+      cpu: 1
+    limits:
+      memory: 16Gi
+      cpu: 4
+
 kapacitor:
   # -- Enable Kapacitor.
   enabled: true
@@ -336,7 +362,7 @@ bucketmapper:
     # -- repository for rubin-influx-tools
     repository: ghcr.io/lsst-sqre/rubin-influx-tools
     # -- tag for rubin-influx-tools
-    tag: 0.1.23
+    tag: 0.2.0
 
 squareEvents:
   # -- Enable the Square Events subchart with topic and user configurations.

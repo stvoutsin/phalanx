@@ -57,7 +57,7 @@ kafka-connect-manager:
       eas:
         enabled: true
         repairerConnector: false
-        topicsRegex: ".*DIMM|.*DSM|.*ESS|.*HVAC|.*WeatherForecast|.*WeatherStation"
+        topicsRegex: ".*DIMM|.*DSM|.*ESS|.*HVAC|.*WeatherForecast"
       latiss:
         enabled: true
         repairerConnector: false
@@ -82,7 +82,7 @@ kafka-connect-manager:
       test:
         enabled: true
         repairerConnector: false
-        topicsRegex: ".*Test"
+        topicsRegex: "lsst.sal.Test"
       pmd:
         enabled: true
         repairerConnector: false
@@ -103,6 +103,10 @@ kafka-connect-manager:
         enabled: true
         repairerConnector: false
         topicsRegex: ".*GIS"
+      mtvms:
+        enabled: true
+        repairerConnector: false
+        topicsRegex: ".*MTVMS"
       lasertracker:
         enabled: true
         repairerConnector: false

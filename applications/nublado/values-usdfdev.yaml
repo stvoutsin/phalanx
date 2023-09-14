@@ -3,7 +3,7 @@ controller:
     safir:
       logLevel: "DEBUG"
     fileserver:
-      enabled: true
+      enabled: false
       timeout: 21600
 
     images:
@@ -158,11 +158,6 @@ proxy:
       # proxy-body-size is temporary until USDF uses our normal ingress-nginx,
       # which already configures a larger value.
       nginx.ingress.kubernetes.io/proxy-body-size: "50m"
-
-      # These are substantially shorter than the default timeouts (it's not
-      # clear why).
-      nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
-      nginx.ingress.kubernetes.io/proxy-read-timeout: "20"
 
 jupyterhub:
   hub:
