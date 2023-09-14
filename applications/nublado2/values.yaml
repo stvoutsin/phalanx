@@ -6,7 +6,7 @@ jupyterhub:
   hub:
     authenticatePrometheus: false
     image:
-      name: lsstsqre/nublado2
+      name: stvoutsin/nublado2
       tag: "2.6.1"
     resources:
       limits:
