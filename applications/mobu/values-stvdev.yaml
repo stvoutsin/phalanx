@@ -1,11 +1,11 @@
 config:
   autostart:
     - name: "firefighter"
-      count: 5
+      count: 1
       users:
-      - username: "bot-mobu-recommended"
-        uidnumber: 74768
-        gidnumber: 74768
+        - username: "bot-mobu-recommended"
+          uidnumber: 74768
+          gidnumber: 74768
       scopes:
         - "exec:notebook"
         - "exec:portal"
@@ -23,6 +23,8 @@ config:
       count: 1
       users:
         - username: "bot-mobu-tutorial"
+          uidnumber: 74768
+          gidnumber: 74768
       scopes:
         - "exec:notebook"
         - "exec:portal"
