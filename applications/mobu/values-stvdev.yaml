@@ -15,8 +15,8 @@ config:
         type: "JupyterPythonLoop"
         restart: true
         options:
-          jupyter:
-            image_size: "Small"
+            code: "print(1+1, end="")"
+            max_executions: 1
     - name: "tap"
       count: 1
       users:
