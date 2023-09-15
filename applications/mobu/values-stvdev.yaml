@@ -10,11 +10,10 @@ config:
         - "exec:notebook"
         - "exec:portal"
         - "read:image"
-        - "read:tap"    
-      business: 
+        - "read:tap"
+      business:
         type: "JupyterPythonLoop"
-      restart: true
-      
+        restart: true
     - name: "tap"
       count: 1
       users:
@@ -22,27 +21,27 @@ config:
           uidnumber: 74775
           gidnumber: 74775
       scopes: ["read:tap"]
-      business: 
+      business:
         type: "TAPQueryRunner"
         restart: true
         options:
           tap_sync: true
           tap_query_set: "dp0.2"
-     - name: "firefighter"
-       count: 5
-       user_spec:
-         username_prefix: "bot-mobu-weekly"
-         uid_start: 74768
-         gid_start: 74768
-       scopes:
-         - "exec:notebook"
-         - "exec:portal"
-         - "read:image"
-         - "read:tap"
-       business: 
-         type: "NotebookRunner"
-         options:
-           repo_url: "https://github.com/lsst-sqre/system-test.git"
-           repo_branch: "prod"
-           max_executions: 1
-         restart: true
+    - name: "firefighter"
+      count: 5
+      user_spec:
+        username_prefix: "bot-mobu-weekly"
+        uid_start: 74768
+        gid_start: 74768
+      scopes:
+        - "exec:notebook"
+        - "exec:portal"
+        - "read:image"
+        - "read:tap"
+      business:
+        type: "NotebookRunner"
+        options:
+          repo_url: "https://github.com/lsst-sqre/system-test.git"
+          repo_branch: "prod"
+          max_executions: 1
+        restart: true
