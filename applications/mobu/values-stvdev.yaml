@@ -15,7 +15,6 @@ config:
         type: "JupyterPythonLoop"
         restart: true
         options:
-          code: "print(1+1, end="")"
           max_executions: 1
     - name: "tap"
       count: 1
