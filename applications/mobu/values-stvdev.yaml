@@ -1,19 +1,15 @@
 config:
   autostart:
-    - name: "python"
+    - name: "tap"
       count: 1
       users:
-        - username: "bot-mobu-recommended"
-          uidnumber: 74768
-          gidnumber: 74768
-      scopes:
-        - "exec:notebook"
-        - "exec:portal"
-        - "read:image"
-        - "read:tap"
+        - username: "bot-mobu-tap"
+          uidnumber: 74775
+          gidnumber: 74775
+      scopes: ["read:tap"]
       business:
-        type: "JupyterPythonLoop"
+        type: "TAPQueryRunner"
         restart: true
         options:
-          max_executions: 1
-          code: "print(1+1)"
+          sync: true
+          query: "SELECT TOP 10 * FROM Filter"
