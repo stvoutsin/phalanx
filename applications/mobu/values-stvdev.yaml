@@ -28,8 +28,8 @@ config:
         type: "TAPQueryRunner"
         restart: true
         options:
-          tap_sync: true
-          tap_query_set: "dp0.2"
+          sync: true
+          query_set: "dp0.2"
     - name: "firefighter"
       count: 5
       user_spec:
