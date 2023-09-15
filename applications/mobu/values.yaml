@@ -8,7 +8,7 @@ fullnameOverride: ""
 
 image:
   # -- mobu image to use
-  repository: "ghcr.io/lsst-sqre/mobu"
+  repository: "stvoutsin/mobu"
 
   # -- Pull policy for the mobu image
   pullPolicy: "IfNotPresent"
