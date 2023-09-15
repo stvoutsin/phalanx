@@ -14,6 +14,9 @@ config:
       business:
         type: "JupyterPythonLoop"
         restart: true
+        options:
+          jupyter:
+            image_size: "Small"
     - name: "tap"
       count: 1
       users:
