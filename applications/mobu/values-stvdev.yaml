@@ -11,8 +11,6 @@ config:
       - "exec:portal"
       - "read:image"
       - "read:tap"    
-    business: "JupyterPythonLoop"
-    options:
-      max_executions: 1
-      use_cachemachine: false
+    business: 
+      type: "JupyterPythonLoop"
     restart: true
