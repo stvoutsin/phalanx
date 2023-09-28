@@ -37,9 +37,7 @@ config:
     <Section>
 
       ## Data documentation
-
       ### GaiaXCatwise
-
      <CardGroup>
 	<a href="https://rspdev.ddns.net/portal/app/">
 	  <Card>
