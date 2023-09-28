@@ -11,5 +11,4 @@ cadc-tap:
   
   qserv:
     host: "192.41.122.79:30040"
-    mock:
-      enabled: false
+
