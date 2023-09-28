@@ -1,5 +1,9 @@
+image:
+  pullPolicy: Always
+  # tag: tickets-DM-34723
+
 config:
-  siteName: "Rubin Science Platform"
+  siteName: "Rubin Science Platform @ ROE"
   semaphoreUrl: "http://rspdev.ddns.net/semaphore"
   apiAspectPageMdx: |
     # Rubin Science Platform APIs
@@ -110,7 +114,6 @@ config:
     [#help-desk](https://lsstuk.slack.com).
 
     Don't forget to check the <Link href="/docs">documentation</Link>.
-    
 
 ingress:
   tls: false
