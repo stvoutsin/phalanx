@@ -4,7 +4,7 @@ image:
 
 config:
   siteName: "Rubin Science Platform @ ROE"
-  semaphoreUrl: "http://rspdev.ddns.net/semaphore"
+  semaphoreUrl: "https://rsp.lsst.ac.uk/semaphore"
   apiAspectPageMdx: |
     # Rubin Science Platform APIs
 
@@ -22,7 +22,7 @@ config:
     (Python package). The TAP endpoint is:
 
     ```
-    https://rspdev.ddns.net/api/tap
+    https://rsp.lsst.ac.uk/api/tap
     ```
 
     See our tutorial [Authenticating from TOPCat outside the Science Platform](https://rsp.lsst.io/guides/auth/using-topcat-outside-rsp.html)
@@ -37,17 +37,19 @@ config:
     <Section>
 
       ## Data documentation
+
       ### GaiaXCatwise
-     <CardGroup>
-       <a href="https://rspdev.ddns.net/portal/app/">
-         <Card>
-           Table of counterpart associations between Gaia DR3 and CatWISE2020. Uses probabilistic 
+      
+      <CardGroup>
+       <a href="https://rsp.lsst.ac.uk/portal/app/">
+         <Card>Table of counterpart associations between Gaia DR3 and CatWISE2020. Uses probabilistic 
     cross-match algorithms as described by Wilson & Naylor (MNRAS, 2017, 2018a,b) and Wilson (RNAAS, 2022). Sources are returned either as a pairing, in which the Gaia and WISE objects are the same astrophysical source detected twice, or as non-matches, with that particular object in one of the catalogues having a corresponding flux upper limits in the opposing catalogue, and entries include various pieces of metadata such as the probability of the match/non-match, likelihood of match on purely position or brightness grounds, and information on the level to which objects suffer contamination due to hidden and unresolved background sources."
          </Card>
        </a>
       </CardGroup>
 
     </Section>
+    
     <Section>
 
       ## Platform and software documentation
@@ -105,6 +107,7 @@ config:
       portal.](https://www.lsst.io)
 
     </Section>
+    
   supportPageMdx: |
     # Get help with the Rubin Science Platform on rsp.lsst.ac.uk
 
