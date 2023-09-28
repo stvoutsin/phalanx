@@ -12,4 +12,6 @@ config:
         restart: true
         options:
           sync: true
-          query: "SELECT TOP 10 * FROM Filter"
+          queries: 
+            - "SELECT TOP 10 * FROM TAP_SCHEMA.schemas"
+            - "SELECT TOP 10 * FROM TAP_SCHEMA.columns"
