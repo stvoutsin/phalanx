@@ -1,6 +1,9 @@
+name: stvdev
+vaultUrl: "https://vault.lsst.ac.uk"
 environment: stvdev
 fqdn: rspdev.ddns.net
 vaultPathPrefix: secret/k8s_operator/stvdev
+
 
 alert-stream-broker:
   enabled: false
