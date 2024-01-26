@@ -1,0 +1,12 @@
+name: stvdev
+fqdn: rspdev.ddns.net
+vaultUrl: "https://vault.lsst.ac.uk"
+vaultPathPrefix: secret/k8s_operator/stvdev
+
+applications:
+  mobu: true
+  nublado: true
+  portal: true
+  postgres: true
+  squareone: true
+  tap: true
