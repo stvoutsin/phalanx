@@ -1,0 +1,17 @@
+config:
+  autostart:
+    - name: "tap"
+      count: 1
+      users:
+        - username: "bot-mobu-tap"
+          uidnumber: 74775
+          gidnumber: 74775
+      scopes: ["read:tap"]
+      business:
+        type: "TAPQueryRunner"
+        restart: true
+        options:
+          sync: true
+          queries: 
+            - "SELECT TOP 10 * FROM TAP_SCHEMA.schemas"
+            - "SELECT TOP 10 * FROM TAP_SCHEMA.columns"
