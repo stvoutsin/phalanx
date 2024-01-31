@@ -12,4 +12,3 @@ vault-secrets-operator:
           key: VAULT_SECRET_ID
   vault:
     authMethod: approle
-    address: "http://vault.lsst.ac.uk"
