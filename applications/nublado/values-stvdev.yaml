@@ -43,3 +43,18 @@ controller:
           volumeName: "home"
         - containerPath: "/datasets"
           volumeName: "datasets"
+proxy:
+  ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "50s"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "50s"
+      nginx.ingress.kubernetes.io/client-max-body-size: "50m"
+
+jupyterhub:
+  hub:
+    db:
+      upgrade: true
+  cull:
+    timeout: 432000
+    every: 300
+    maxAge: 2160000
