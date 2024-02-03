@@ -1,2 +1,4 @@
 config:
   separateSecrets: true
+  useButlerServer: true
+  slackAlerts: true
