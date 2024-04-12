@@ -1,8 +1,6 @@
 name: "minikube"
 fqdn: "minikube.lsst.codes"
-onepassword:
-  connectUrl: "https://roundtable-dev.lsst.cloud/1password"
-  vaultTitle: "RSP minikube.lsst.codes"
+vaultUrl: "https://vault.lsst.ac.uk"
 vaultPathPrefix: "secret/phalanx/minikube"
 
 # The primary constraint on enabling applications is the low available memory
@@ -13,3 +11,4 @@ vaultPathPrefix: "secret/phalanx/minikube"
 applications:
   mobu: true
   postgres: true
+  portal: true
