@@ -1,4 +1,3 @@
-# Reset token storage on every Redis restart.
 redis:
   persistence:
     enabled: false
@@ -9,45 +8,37 @@ config:
 
   # Support OpenID Connect clients like Chronograf.
   oidcServer:
-    enabled: true
+    enabled: false
 
   github:
-    clientId: "64d11db34c968448381e"
+    clientId: "10172b4db1b67ee31620"
 
   # Allow access by GitHub team.
   groupMapping:
-    "admin:jupyterlab":
-      - github:
-          organization: "lsst-sqre"
-          team: "square"
     "exec:admin":
       - github:
-          organization: "lsst-sqre"
-          team: "square"
+          organization: "lsp-uk"
+          team: "dev"
     "exec:internal-tools":
       - github:
-          organization: "lsst-sqre"
-          team: "square"
+          organization: "lsp-uk"
+          team: "dev"
     "exec:notebook":
       - github:
-          organization: "lsst-sqre"
-          team: "square"
+          organization: "lsp-uk"
+          team: "dev"
     "exec:portal":
       - github:
-          organization: "lsst-sqre"
-          team: "square"
+          organization: "lsp-uk"
+          team: "dev"
     "read:image":
       - github:
-          organization: "lsst-sqre"
-          team: "square"
+          organization: "lsp-uk"
+          team: "dev"
     "read:tap":
       - github:
-          organization: "lsst-sqre"
-          team: "square"
+          organization: "lsp-uk"
+          team: "dev"
 
   initialAdmins:
-    - "afausti"
-    - "athornton"
-    - "frossie"
-    - "jonathansick"
-    - "rra"
+    - "stvoutsin"
