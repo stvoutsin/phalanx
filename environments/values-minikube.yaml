@@ -13,4 +13,3 @@ applications:
   postgres: true
   portal: true
   globalclock: true
-  
