@@ -12,3 +12,5 @@ applications:
   mobu: true
   postgres: true
   portal: true
+  globalclock: true
+  
