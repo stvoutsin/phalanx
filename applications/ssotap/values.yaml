@@ -20,6 +20,104 @@ cadc-tap:
     # -- Vault secret name: the final key in the vault path
     vaultSecretName: "ssotap"
 
+    qserv:
+      # -- QServ hostname:port to connect to
+      # @default -- `"mock-db:3306"` (the mock QServ)
+      host: "mock-db:3306"
+
+      image:
+        # -- TAP image to use
+        repository: "ghcr.io/lsst-sqre/lsst-tap-service"
+
+        # -- Pull policy for the TAP image
+        pullPolicy: "IfNotPresent"
+
+        # -- Tag of TAP image to use
+        tag: "2.2.0"
+
+    # -- Address to a MySQL database containing TAP schema data
+    tapSchemaAddress: "cadc-tap-schema-db:3306"
+
+    # -- Datalink payload URL
+    datalinkPayloadUrl: "https://github.com/lsst/sdm_schemas/releases/download/2.6.1/datalink-snippets.zip"
+
+    # -- Name of GCS bucket in which to store results
+    gcsBucket: "async-results.lsst.codes"
+
+    # -- Base URL for results stored in GCS bucket
+    gcsBucketUrl: "https://tap-files.lsst.codes"
+
+    # -- GCS bucket type (GCS or S3)
+    gcsBucketType: "GCS"
+
+    # -- Java heap size, which will set the maximum size of the heap. Otherwise
+    # Java would determine it based on how much memory is available and black
+    # maths.
+    jvmMaxHeapSize: 31G
+
+  # -- Vault secret name, this is appended to the global path to find the
+  # vault secrets associated with this deployment.
+  vaultSecretName: ""
+
+  tapSchema:
+    image:
+      # -- TAP schema image to ue. This must be overridden by each environment
+      # with the TAP schema for that environment.
+      repository: "lsstsqre/tap-schema-mock"
+
+      # -- Pull policy for the TAP schema image
+      pullPolicy: "IfNotPresent"
+
+      # -- Tag of TAP schema image
+      tag: "2.6.1"
+
+    # -- Resource limits and requests for the TAP schema database pod
+    resources: {}
+
+    # -- Annotations for the TAP schema database pod
+    podAnnotations: {}
+
+    # -- Node selection rules for the TAP schema database pod
+    nodeSelector: {}
+
+    # -- Tolerations for the TAP schema database pod
+    tolerations: []
+
+    # -- Affinity rules for the TAP schema database pod
+    affinity: {}
+
+  cloudsql:
+    # -- Enable the Cloud SQL Auth Proxy sidecar, used with Cloud SQL databases
+    # on Google Cloud
+    enabled: false
+
+    image:
+      # -- Cloud SQL Auth Proxy image to use
+      repository: "gcr.io/cloudsql-docker/gce-proxy"
+
+      # -- Cloud SQL Auth Proxy tag to use
+      tag: "1.35.3"
+
+      # -- Pull policy for Cloud SQL Auth Proxy images
+      pullPolicy: "IfNotPresent"
+
+    # -- Instance connection name for a Cloud SQL PostgreSQL instance
+    instanceConnectionName: ""
+
+    # -- The Google service account that has an IAM binding to the `ssotap-uws`
+    # @default -- None, must be set
+    serviceAccount: ""
+
+    # -- Resource limits and requests for the Cloud SQL Proxy container
+    # @default -- See `values.yaml`
+    resources:
+      limits:
+        cpu: "100m"
+        memory: "20Mi"
+      requests:
+        cpu: "5m"
+        memory: "7Mi"
+
 # The following will be set by parameters injected by Argo CD and should not
 # be set in the individual environment values files.
 global:
