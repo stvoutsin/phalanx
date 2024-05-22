@@ -20,10 +20,6 @@ IVOA TAP service for Solar System Objects
 | cadc-tap.config.pg.database | string | `"dp03_catalogs"` | Postgres database to connect to |
 | cadc-tap.config.pg.host | string | `"usdf-pg-catalogs.slac.stanford.edu:5432"` | Postgres hostname:port to connect to |
 | cadc-tap.config.pg.username | string | `"dp03"` | Postgres username to use to connect |
-| cadc-tap.config.qserv.host | string | `"mock-db:3306"` (the mock QServ) | QServ hostname:port to connect to |
-| cadc-tap.config.qserv.image.pullPolicy | string | `"IfNotPresent"` | Pull policy for the TAP image |
-| cadc-tap.config.qserv.image.repository | string | `"ghcr.io/lsst-sqre/lsst-tap-service"` | TAP image to use |
-| cadc-tap.config.qserv.image.tag | string | `"2.2.0"` | Tag of TAP image to use |
 | cadc-tap.config.tapSchemaAddress | string | `"cadc-tap-schema-db:3306"` | Address to a MySQL database containing TAP schema data |
 | cadc-tap.config.vaultSecretName | string | `"ssotap"` | Vault secret name: the final key in the vault path |
 | cadc-tap.ingress.path | string | `"ssotap"` |  |

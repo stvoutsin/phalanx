@@ -21,7 +21,7 @@ spec:
         app.kubernetes.io/component: "server"
     spec:
       {{- if .Values.cloudsql.enabled }}
-      serviceAccountName: "ssotap-uws"
+      serviceAccountName: "ssotap"
       {{- else }}
       automountServiceAccountToken: false
       {{- end }}
@@ -69,7 +69,7 @@ spec:
                 -Dtapschemauser.maxActive=100
                 -Duws.username=postgres
                 -Duws.driverClassName=org.postgresql.Driver
-                -Duws.url=jdbc:postgresql://127.0.0.1/ssotap-uws
+                -Duws.url=jdbc:postgresql://ssotap-uws@localhost/ssotap
                 -Duws.maxActive=100
                 {{- if eq .Values.config.backend "pg" }}
                 -Dtap.username={{ .Values.config.pg.username }}

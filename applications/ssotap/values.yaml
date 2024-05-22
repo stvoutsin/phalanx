@@ -20,21 +20,6 @@ cadc-tap:
     # -- Vault secret name: the final key in the vault path
     vaultSecretName: "ssotap"
 
-    qserv:
-      # -- QServ hostname:port to connect to
-      # @default -- `"mock-db:3306"` (the mock QServ)
-      host: "mock-db:3306"
-
-      image:
-        # -- TAP image to use
-        repository: "ghcr.io/lsst-sqre/lsst-tap-service"
-
-        # -- Pull policy for the TAP image
-        pullPolicy: "IfNotPresent"
-
-        # -- Tag of TAP image to use
-        tag: "2.2.0"
-
     # -- Address to a MySQL database containing TAP schema data
     tapSchemaAddress: "cadc-tap-schema-db:3306"
 
