@@ -20,26 +20,26 @@ spec:
         {{- include "cadc-tap.selectorLabels" . | nindent 8 }}
         app.kubernetes.io/component: "server"
     spec:
-      {{- if .Values.cadc-tap.cloudsql.enabled }}
+      {{- if .Values.cloudsql.enabled }}
       serviceAccountName: "ssotap-uws"
       {{- else }}
       automountServiceAccountToken: false
       {{- end }}
       containers:
-        {{ - if .Values.cadc-tap.cloudsql.enabled }}
+        {{- if .Values.cloudsql.enabled }}
         - name: "cloud-sql-proxy"
           command:
             - "/cloud_sql_proxy"
             - "-ip_address_types=PRIVATE"
             - "-log_debug_stdout=true"
             - "-structured_logs=true"
-            - "-instances={{ required "cloudsql.instanceConnectionName must be specified" .Values.cadc-tap.cloudsql.instanceConnectionName }}=tcp:5432"
+            - "-instances={{ required "cloudsql.instanceConnectionName must be specified" .Values.cloudsql.instanceConnectionName }}=tcp:5432"
           image: "{{ .Values.cloudsql.image.repository }}:{{ .Values.cloudsql.image.tag }}"
-          imagePullPolicy: { { .Values.cloudsql.image.pullPolicy | quote } }
-          { { - with .Values.cloudsql.resources } }
+          imagePullPolicy: {{ .Values.cloudsql.image.pullPolicy | quote }}
+          {{- with .Values.cloudsql.resources }}
           resources:
-            { { - toYaml . | nindent 12 } }
-          { { - end } }
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -49,7 +49,7 @@ spec:
             runAsNonRoot: true
             runAsUser: 65532
             runAsGroup: 65532
-        { { - end } }
+        {{- end }}
         - name: "tap-server"
           {{- if eq .Values.config.backend "pg" }}
           image: "{{ .Values.config.pg.image.repository }}:{{ .Values.config.pg.image.tag }}"
@@ -78,7 +78,6 @@ spec:
                 -Dtap.maxActive=100
                 -Dca.nrc.cadc.auth.Authenticator=ca.nrc.cadc.sample.AuthenticatorImpl
                 {{- end }}
-
                 {{- if eq .Values.config.backend "qserv" }}
                 -Dqservuser.username=qsmaster
                 -Dqservuser.password=
@@ -146,15 +145,15 @@ spec:
             secretName: cadc-tap
         - name: "tmp"
           emptyDir: {}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      #{{- with .Values.nodeSelector }}
+      #nodeSelector:
+      #  {{- toYaml . | nindent 8 }}
+      #{{- end }}
+      #{{- with .Values.affinity }}
+      #affinity:
+      #  {{- toYaml . | nindent 8 }}
+      #{{- end }}
+      #{{- with .Values.tolerations }}
+      #tolerations:
+      #  {{- toYaml . | nindent 8 }}
+      #{{- end }}

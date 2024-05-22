@@ -86,37 +86,37 @@ cadc-tap:
     # -- Affinity rules for the TAP schema database pod
     affinity: {}
 
-  cloudsql:
-    # -- Enable the Cloud SQL Auth Proxy sidecar, used with Cloud SQL databases
-    # on Google Cloud
-    enabled: false
+cloudsql:
+  # -- Enable the Cloud SQL Auth Proxy sidecar, used with Cloud SQL databases
+  # on Google Cloud
+  enabled: false
 
-    image:
-      # -- Cloud SQL Auth Proxy image to use
-      repository: "gcr.io/cloudsql-docker/gce-proxy"
+  image:
+    # -- Cloud SQL Auth Proxy image to use
+    repository: "gcr.io/cloudsql-docker/gce-proxy"
 
-      # -- Cloud SQL Auth Proxy tag to use
-      tag: "1.35.3"
+    # -- Cloud SQL Auth Proxy tag to use
+    tag: "1.35.3"
 
-      # -- Pull policy for Cloud SQL Auth Proxy images
-      pullPolicy: "IfNotPresent"
+    # -- Pull policy for Cloud SQL Auth Proxy images
+    pullPolicy: "IfNotPresent"
 
-    # -- Instance connection name for a Cloud SQL PostgreSQL instance
-    instanceConnectionName: ""
+  # -- Instance connection name for a Cloud SQL PostgreSQL instance
+  instanceConnectionName: ""
 
-    # -- The Google service account that has an IAM binding to the `ssotap-uws`
-    # @default -- None, must be set
-    serviceAccount: ""
+  # -- The Google service account that has an IAM binding to the `ssotap-uws`
+  # @default -- None, must be set
+  serviceAccount: ""
 
-    # -- Resource limits and requests for the Cloud SQL Proxy container
-    # @default -- See `values.yaml`
-    resources:
-      limits:
-        cpu: "100m"
-        memory: "20Mi"
-      requests:
-        cpu: "5m"
-        memory: "7Mi"
+  # -- Resource limits and requests for the Cloud SQL Proxy container
+  # @default -- See `values.yaml`
+  resources:
+    limits:
+      cpu: "100m"
+      memory: "20Mi"
+    requests:
+      cpu: "5m"
+      memory: "7Mi"
 
 # The following will be set by parameters injected by Argo CD and should not
 # be set in the individual environment values files.
