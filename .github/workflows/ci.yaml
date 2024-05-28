@@ -1,6 +1,9 @@
 name: CI
 
 "on":
+  push:
+    branches:
+      - '**'
   merge_group: {}
   pull_request: {}
 
@@ -62,6 +65,12 @@ jobs:
         with:
           # Used to query GitHub for the latest Helm release.
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Helm Unittest Plugin
+        run: helm plugin install https://github.com/quintush/helm-unittest
+
+      - name: Run Helm Unittest
+        run: helm unittest charts/cadc-tap
 
       - uses: lsst-sqre/run-tox@v1
         with:

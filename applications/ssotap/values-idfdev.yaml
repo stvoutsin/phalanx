@@ -3,6 +3,12 @@ cadc-tap:
     uwsDatabaseUrl: "postgresql://localhost:5432/ssotap"
     uwsDatabaseUsername: "ssotap"
 
+    pg:
+      image:
+        repository: "stvoutsin/tap-postgres-service"
+        pullPolicy: "Always"
+        tag: "1.15.0"
+
   tapSchema:
     image:
       repository: "lsstsqre/tap-schema-idfdev-sso"

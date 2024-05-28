@@ -57,7 +57,7 @@ spec:
           {{- end }}
           {{- if eq .Values.config.backend "qserv" }}
           image: "{{ .Values.config.qserv.image.repository }}:{{ .Values.config.qserv.image.tag }}"
-          imagePullPolicy: "{{ .Values.config.qserv.image.pullPolicy | quote }}"
+          imagePullPolicy: {{ .Values.config.qserv.image.pullPolicy | quote }}
           {{- end }}
           env:
             - name: CATALINA_OPTS
