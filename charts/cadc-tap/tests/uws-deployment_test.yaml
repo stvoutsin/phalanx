@@ -1,12 +1,14 @@
 suite: UWS Deployment
 templates:
-  - uws-db-deployment.yaml 
+  - uws-db-deployment.yaml
 
 tests:
   - it: should not create a UWS deployment when uws is disabled
     set:
       uws:
         enabled: false
+      global:
+        host: "example.com"
     asserts:
       - hasDocuments:
           count: 0
@@ -14,7 +16,9 @@ tests:
   - it: should create a UWS deployment when uws is enabled
     set:
       uws:
-        enabled: true 
+        enabled: true
+      global:
+        host: "example.com"
     asserts:
       - hasDocuments:
           count: 1
