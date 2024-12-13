@@ -146,7 +146,7 @@ argo-cd:
       server.basehref: "/argo-cd"
 
       # -- Server root path when running under a reverse proxy
-      # server.rootpath: "/argo-cd"
+      server.rootpath: "/argo-cd"
 
     secret:
       # -- Create the Argo CD secret (we manage this with Vault)
