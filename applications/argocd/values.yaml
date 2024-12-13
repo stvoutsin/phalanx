@@ -143,7 +143,7 @@ argo-cd:
       server.insecure: true
 
       # -- Base href for `index.html` when running under a reverse proxy
-      server.basehref: "/argo-cd"
+      # server.basehref: "/argo-cd"
 
       # -- Server root path when running under a reverse proxy
       server.rootpath: "/argo-cd"
