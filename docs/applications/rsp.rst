@@ -26,4 +26,3 @@ Argo CD project: ``rsp``
    tap/index
    times-square/index
    vo-cutouts/index
-   wobbly/index

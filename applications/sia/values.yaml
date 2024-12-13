@@ -66,13 +66,7 @@ podAnnotations: {}
 
 # -- Resource limits and requests for the sia deployment pod
 # @default -- See `values.yaml`
-resources:
-  requests:
-    cpu: 2.0
-    memory: "2Gi"
-  limits:
-    cpu: 8.0
-    memory: "32Gi"
+resources: {}
 
 # -- Tolerations for the sia deployment pod
 tolerations: []

@@ -2,14 +2,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "wobbly-schema-update"
+  name: "vo-cutouts-schema-update"
   annotations:
   annotations:
     helm.sh/hook: "pre-install,pre-upgrade"
     helm.sh/hook-delete-policy: "hook-succeeded"
     helm.sh/hook-weight: "1"
   labels:
-    {{- include "wobbly.labels" . | nindent 4 }}
+    {{- include "vo-cutouts.labels" . | nindent 4 }}
 spec:
   template:
     metadata:
@@ -18,15 +18,16 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "wobbly.selectorLabels" . | nindent 8 }}
+        {{- include "vo-cutouts.selectorLabels" . | nindent 8 }}
         app.kubernetes.io/component: "schema-update"
+        vo-cutouts-redis-client: "true"
     spec:
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- if .Values.cloudsql.enabled }}
-      serviceAccountName: "wobbly"
+      serviceAccountName: "vo-cutouts"
       {{- else }}
       automountServiceAccountToken: false
       {{- end }}
@@ -74,22 +75,27 @@ spec:
             - name: "lifecycle"
               mountPath: "/lifecycle"
         {{- end }}
-        - name: "wobbly"
+        - name: "vo-cutouts"
           command:
             - "/bin/sh"
             - "-c"
             - |
-              wobbly update-schema
+              vo-cutouts update-schema
               touch /lifecycle/main-terminated
           env:
-            - name: "WOBBLY_DATABASE_PASSWORD"
+            - name: "CUTOUT_ARQ_QUEUE_PASSWORD"
               valueFrom:
                 secretKeyRef:
-                  name: "wobbly"
+                  name: "vo-cutouts"
+                  key: "redis-password"
+            - name: "CUTOUT_DATABASE_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: "vo-cutouts"
                   key: "database-password"
           envFrom:
             - configMapRef:
-                name: "wobbly"
+                name: "vo-cutouts"
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           {{- with .Values.resources }}

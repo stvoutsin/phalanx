@@ -78,9 +78,6 @@ applications:
   # -- Enable the filestore-backup application
   filestore-backup: false
 
-  # -- Enable the flink application
-  flink: false
-
   # -- Enable the Gafaelfawr application. This is required by Phalanx since
   # most other applications use `GafaelfawrIngress`
   gafaelfawr: true
@@ -261,10 +258,6 @@ applications:
 
   # -- Enable the vo-cutouts application
   vo-cutouts: false
-
-  # -- Enable the wobbly application, required if the environment will be
-  # running any Safir-based UWS services
-  wobbly: false
 
 # -- Add labels for application namespaces.
 namespaceLabels: {}

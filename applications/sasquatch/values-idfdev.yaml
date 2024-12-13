@@ -159,16 +159,3 @@ app-metrics:
   apps:
     - gafaelfawr
     - mobu
-    - wobbly
-
-backup:
-  enabled: true
-  image:
-    pullPolicy: "Always"
-  persistence:
-    size: 500Gi
-    storageClass: standard
-  items:
-    chronograf: false
-    kapacitor: false
-    influxdbEnterprise: true

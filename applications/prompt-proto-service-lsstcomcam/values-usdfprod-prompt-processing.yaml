@@ -15,47 +15,48 @@ prompt-proto-service:
   image:
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: 4.11.1
+    tag: 4.9.0
 
   instrument:
     pipelines:
-      # IMPORTANT: don't use flow-style mappings (i.e., {}) in pipelines specs
-      # if the result (including any comments) is longer than 72 characters.
-      # The config will get corrupted after template substitution.
-      # Block-style mappings can have lines of any length.
       main: |-
         - survey: BLOCK-320  # Science Validation
           pipelines:
           - ${PROMPT_PROCESSING_DIR}/pipelines/LSSTComCam/ApPipe.yaml
           - ${PROMPT_PROCESSING_DIR}/pipelines/LSSTComCam/SingleFrame.yaml
           - ${PROMPT_PROCESSING_DIR}/pipelines/LSSTComCam/Isr.yaml
+        - survey: BLOCK-T60  # optics alignment
+          pipelines: []
+        - survey: BLOCK-T75  # giant donuts
+          pipelines: []
+        - survey: BLOCK-T88  # optics alignment
+          pipelines: []
+        - survey: BLOCK-T215  # twilight flats
+          pipelines: []
+        - survey: BLOCK-T216  # twilight flats
+          pipelines: []
+        - survey: BLOCK-T219  # pretty pictures
+          pipeliens: []
         - survey: BLOCK-T246  # instrument checkout
           pipelines: ['${PROMPT_PROCESSING_DIR}/pipelines/LSSTComCam/Isr-cal.yaml']
-        # Manual observations during SV blocks
-        - survey: BLOCK-T306
+        - survey: BLOCK-T249  # AOS alignment
           pipelines: []
-        - survey: BLOCK-T307
+        - survey: BLOCK-T250  # TMA daytime checkout
           pipelines: []
-        - survey: BLOCK-T308
-          pipelines: []
-        - survey: BLOCK-T309
-          pipelines: []
-        - survey: BLOCK-T310
-          pipelines: []
-        - survey: BLOCK-T311
-          pipelines: []
-        - survey: BLOCK-T312
-          pipelines: []
-        # Miscellaneous scripts, not always images
         - {survey: "", pipelines: []}
-        # Ignore anything else
-        - {pipelines: []}
       preprocessing: |-
         - survey: BLOCK-320
           pipelines: ['${PROMPT_PROCESSING_DIR}/pipelines/LSSTComCam/Preprocessing.yaml']
+        - {survey: BLOCK-T60, pipelines: []}
+        - {survey: BLOCK-T75, pipelines: []}
+        - {survey: BLOCK-T88, pipelines: []}
+        - {survey: BLOCK-T215, pipelines: []}
+        - {survey: BLOCK-T216, pipelines: []}
+        - {survey: BLOCK-T219, pipelines: []}
+        - {survey: BLOCK-T246, pipelines: []}
+        - {survey: BLOCK-T249, pipelines: []}
+        - {survey: BLOCK-T250, pipelines: []}
         - {survey: "", pipelines: []}
-        # No preprocessing for anything else
-        - {pipelines: []}
     calibRepo: s3://rubin-summit-users
 
   s3:

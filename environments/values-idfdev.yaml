@@ -16,7 +16,6 @@ applications:
   butler: true
   datalinker: true
   filestore-backup: true
-  flink: true
   ghostwriter: true
   hips: true
   jira-data-proxy: true
@@ -39,4 +38,3 @@ applications:
   times-square: true
   vault-secrets-operator: true
   vo-cutouts: true
-  wobbly: true

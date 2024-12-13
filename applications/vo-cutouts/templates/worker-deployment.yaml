@@ -26,7 +26,11 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- if .Values.config.serviceAccount }}
       serviceAccountName: "vo-cutouts"
+      {{- else }}
+      automountServiceAccountToken: false
+      {{- end }}
       containers:
         - name: "worker"
           securityContext:
