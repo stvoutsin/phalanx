@@ -1,16 +1,10 @@
 argo-cd:
   configs:
     cm:
-      url: "https://rsp-test.lsst.ac.uk/argo-cd"
+      url: "https://rsp-test.lsst.ac.uk"
     secret:
       createSecret: true
   server:
     ingress:
       hostname: "rsp-test.lsst.ac.uk"
       tls: false
-      #annotations:
-      #  nginx.ingress.kubernetes.io/rewrite-target: "/argo-cd/$2"
-      #  nginx.ingress.kubernetes.io/use-regex: "true"
-      #ingressClassName: "nginx"
-      #path: "/argo-cd(/|$)(.*)"
-      #pathType: "Prefix"
