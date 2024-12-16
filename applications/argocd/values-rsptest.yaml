@@ -8,9 +8,9 @@ argo-cd:
     ingress:
       hostname: "rsp-test.lsst.ac.uk"
       tls: false
-      annotations:
-        nginx.ingress.kubernetes.io/rewrite-target: "/argo-cd/$2"
-        nginx.ingress.kubernetes.io/use-regex: "true"
-      ingressClassName: "nginx"
-      path: "/argo-cd(/|$)(.*)"
-      pathType: "Prefix"
+      #annotations:
+      #  nginx.ingress.kubernetes.io/rewrite-target: "/argo-cd/$2"
+      #  nginx.ingress.kubernetes.io/use-regex: "true"
+      #ingressClassName: "nginx"
+      #path: "/argo-cd(/|$)(.*)"
+      #pathType: "Prefix"
