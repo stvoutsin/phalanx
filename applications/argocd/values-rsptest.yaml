@@ -1,7 +1,7 @@
 argo-cd:
   configs:
     cm:
-      url: "https://rsp-test.lsst.ac.uk"
+      url: "https://rsp-test.lsst.ac.uk/argo-cd"
     secret:
       createSecret: true
   server:
