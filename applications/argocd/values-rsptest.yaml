@@ -1,4 +1,3 @@
-      tls: false
 argo-cd:
   server:
     ingress:
