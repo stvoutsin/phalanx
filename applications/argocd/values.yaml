@@ -119,18 +119,18 @@ argo-cd:
 
       # -- Annotations to add to the ingress
       # @default -- Configure the `letsencrypt-dns` TLS cert cluster issuer
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-dns"
+      #annotations:
+      #  cert-manager.io/cluster-issuer: "letsencrypt-dns"
 
       # -- Ingress class to use for Argo CD ingress
       ingressClassName: "nginx"
 
       # -- Paths to route to Argo CD
-      path: "/argo-cd"
+      #path: "/argo-cd"
 
       # -- Enable TLS management for this ingress. Disable this if TLS should
       # not use a Let's Encrypt TLS certificate.
-      tls: true
+      # tls: true
 
   configs:
     cm:

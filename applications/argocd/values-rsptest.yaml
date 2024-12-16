@@ -4,7 +4,7 @@ argo-cd:
     ingress:
       hosts:
         - "rsp-test.lsst.ac.uk"
-      tls: false
+      #tls: false
     config:
       url: "https://rsp-test.lsst.ac.uk/argo-cd"
 
