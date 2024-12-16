@@ -11,6 +11,10 @@ argo-cd:
       hostname: "rsp-test.lsst.ac.uk"
       path: "/argo-cd"
       tls: false
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: "/argo-cd/$2"
+        nginx.ingress.kubernetes.io/use-regex: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
 
 # argo-cd:
 #   server:
