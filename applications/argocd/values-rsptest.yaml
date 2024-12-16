@@ -13,4 +13,4 @@ argo-cd:
         nginx.ingress.kubernetes.io/use-regex: "true"
       ingressClassName: "nginx"
       path: "/argo-cd(/|$)(.*)"
-      pathType: "ImplementationSpecific"
+      pathType: "Prefix"
