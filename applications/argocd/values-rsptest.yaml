@@ -1,18 +1,16 @@
 argo-cd:
   configs:
-    params:
-      server.basehref: "/argo-cd"
-      server.rootpath: "/argo-cd"
-      server.insecure: true
     cm:
-      url: "https://rsp-test.lsst.ac.uk"
-      admin.enabled: true
+      url: "https://rsp-test.lsst.ac.uk/argo-cd"
+    secret:
+      createSecret: true
   server:
     ingress:
       hostname: "rsp-test.lsst.ac.uk"
       tls: false
-      #annotations:
-      #  nginx.ingress.kubernetes.io/rewrite-target: "/argo-cd/$2"
-      #  nginx.ingress.kubernetes.io/use-regex: "true"
-      #  nginx.ingress.kubernetes.io/ssl-redirect: "false"
-      #path: "/argo-cd(/|$)(.*)"
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: "/argo-cd/$2"
+        nginx.ingress.kubernetes.io/use-regex: "true"
+      ingressClassName: "nginx"
+      path: "/argo-cd(/|$)(.*)"
+      pathType: "ImplementationSpecific"
