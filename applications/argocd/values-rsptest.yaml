@@ -1,13 +1,16 @@
 argo-cd:
   configs:
     params:
+      server.insecure: true
       server.basehref: "/argo-cd"
       server.rootpath: "/argo-cd"
-      server.insecure: true
     cm:
-      url: "https://rsp-test.lsst.ac.uk"
+      url: "https://rsp-test.lsst.ac.uk/argo-cd"
       admin.enabled: true
   server:
+    extraArgs:
+      - --basehref=/argo-cd
+      - --rootpath=/argo-cd
     ingress:
       hostname: "rsp-test.lsst.ac.uk"
       tls: false
